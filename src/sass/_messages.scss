@@ -1,0 +1,30 @@
+// =============================================================
+// MENSAJES DE ESTADO (error / alerta)
+// El naranja de error debe contrastar semánticamente con el resto
+// para que el usuario identifique de inmediato que algo ha fallado.
+// =============================================================
+
+@use "variables" as v;
+
+.dni-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: v.$space-3;
+  background: v.$color-paper;
+  border: 3px solid v.$color-alert;
+  color: v.$color-alert;
+  border-radius: v.$radius-control;
+  padding: v.$space-3 v.$space-4;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  // El icono de advertencia se marca como aria-hidden en el HTML
+  // para que los lectores de pantalla no lo lean como carácter,
+  // ya que el texto del mensaje ya comunica el error por sí solo.
+  &__icon {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+}
