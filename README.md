@@ -26,6 +26,19 @@ T, R, W, A, G, M, Y, F, P, D, X, B, N, J, Z, S, Q, V, H, L, C, K, E (índices de
 
 El desarrollo se organiza en fases incrementales, cada una con sus propios commits atómicos y su propia rama (rama de la tarea → commit en la rama → merge a dev → borrado de la rama)
 
+
+* **1.** Prototipo | Estructura HTML semántica, BEM, accesibilidad básica, Sass modular 
+
+* **2.** Identidad visual | Paleta verde + rosa, estilo gráfico atrevido, sello de resultado 
+
+* **3.** Documentación | README con descripción, análisis, planificación y tecnologías 
+
+* **4.** Footer | Pie de página con nombre, bootcamp y academia 
+
+* **5.** Lógica de negocio | Módulo JS independiente desacoplado del DOM 
+
+* **6.** Tests unitarios | 18 tests con Vitest cubriendo todos los escenarios
+
 ## 💻 Tecnologías Utilizadas
 
 * **HTML5 semántico**, con atributos ARIA para accesibilidad.
