@@ -1,0 +1,76 @@
+// =============================================================
+// SELLO DE RESULTADO
+// Elemento distintivo de la página: dos pegatinas circulares
+// apiladas (rosa detrás, verde delante) con la letra calculada.
+// Se muestra únicamente en el panel de resultado correcto.
+// =============================================================
+
+@use "variables" as v;
+
+.dni-stamp {
+  align-self: center;
+  position: relative;
+  width: 148px;
+  height: 148px;
+
+  // Pegatina rosa de fondo: ligeramente desplazada y rotada
+  // para que asome por detrás de la pegatina verde del frente.
+  // Usamos ::before para no necesitar un elemento HTML extra.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: v.$color-pink;
+    border: 4px solid v.$color-ink;
+    transform: rotate(10deg) translate(6px, 6px);
+  }
+
+  // Pegatina verde del frente: contiene la letra calculada.
+  // Tiene su propia rotación contraria para reforzar el efecto
+  // de "apilado a mano", como si fueran dos stickers pegados.
+  &__letter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: v.$color-green;
+    border: 4px solid v.$color-ink;
+    transform: rotate(-6deg);
+    font-family: v.$font-mono;
+    font-size: 3.1rem;
+    font-weight: 700;
+    color: v.$color-ink;
+  }
+}
+
+.dni-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-3;
+
+  // El número del DNI se muestra en una pastilla oscura debajo
+  // del sello, en tipografía monoespaciada para que los dígitos
+  // queden alineados y con aspecto de "código de documento".
+  &__number {
+    font-family: v.$font-mono;
+    font-size: 1rem;
+    font-weight: 700;
+    color: v.$color-paper;
+    letter-spacing: 0.1em;
+    background: v.$color-ink;
+    padding: v.$space-1 v.$space-3;
+    border-radius: 999px;
+  }
+
+  &__caption {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: v.$color-pink-dark;
+  }
+}
