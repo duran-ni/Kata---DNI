@@ -1,5 +1,5 @@
 // =============================================================
-// dni-calculator.js — MÓDULO DE LÓGICA PURA
+// MÓDULO DE LÓGICA PURA
 // Contiene únicamente las funciones de cálculo y validación
 // del DNI, sin ninguna referencia al DOM ni al navegador.
 // Al estar desacoplado de la interfaz, puede importarse y

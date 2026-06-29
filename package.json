@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass ./src/sass/styles.scss ./src/css/styles.css",
-    "sass-w": "sass --watch ./src/sass/styles.scss ./src/css/styles.css"
+    "sass-w": "sass --watch ./src/sass/styles.scss ./src/css/styles.css",
+    "test": "vitest run",
+    "test-w": "vitest"
+  
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/duran-ni/Kata---DNI#readme",
   "devDependencies": {
-    "sass": "^1.101.0"
+    "sass": "^1.101.0",
+    "vitest": "^4.1.9"
   }
 }
