@@ -1,0 +1,25 @@
+{
+  "name": "kata---dni",
+  "version": "1.0.0",
+  "description": "Este proyecto consiste en la creación de una aplicación web que calcula la letra correspondiente a un número de DNI español, validando que el dato introducido sea correcto y permitiendo repetir el cálculo tantas veces como se quiera hasta que el usuario decida cancelar.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass ./src/sass/styles.scss ./src/css/styles.css",
+    "sass-w": "sass --watch ./src/sass/styles.scss ./src/css/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duran-ni/Kata---DNI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/duran-ni/Kata---DNI/issues"
+  },
+  "homepage": "https://github.com/duran-ni/Kata---DNI#readme",
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}
