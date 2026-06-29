@@ -67,3 +67,7 @@ El desarrollo se organiza en fases incrementales, cada una con sus propios commi
 * Repetición del proceso tras un cálculo.
 
 * Cancelación del proceso → fin del programa.
+
+## 📷 Captura Tests
+
+![Tests en verde](./assets/tests.png)
