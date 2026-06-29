@@ -1,0 +1,15 @@
+// =============================================================
+// PUNTO DE ENTRADA DE SASS
+// Este es el único archivo que se compila directamente
+// con "npm run sass" o "npm run sass-w".
+// Cada @use importa un partial distinto en orden lógico:
+// primero las variables (porque todo depende de ellas),
+// luego la base, el layout y finalmente los componentes.
+// =============================================================
+
+@use "variables";
+@use "base";
+@use "layout";
+@use "components";
+@use "stamp";
+@use "messages";
