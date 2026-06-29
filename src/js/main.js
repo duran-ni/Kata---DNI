@@ -4,21 +4,12 @@
 // main.js — LÓGICA DE INTERFAZ
 // Controla qué panel se muestra en cada momento y gestiona
 // los eventos del usuario. La lógica de cálculo y validación
-// vive aquí de momento; en la siguiente fase se extraerá a un
-// módulo independiente para poder testearse con Vitest.
+// se importa desde el módulo independiente dni-calculator.js
 // =============================================================
 
-// Tabla de letras según el resto de dividir entre 23 (índices 0 a 22)
-const LETTERS_BY_REMAINDER = [
-  "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B",
-  "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E",
-];
-
-const MIN_DNI = 0;
-const MAX_DNI = 99999999;
+import { isValidDni, calculateDniLetter } from "./dni-calculator.js";
 
 // --- Referencias a los paneles del HTML ---
-// Cada panel representa un escenario del enunciado
 const panelIntro    = document.getElementById("panel-intro");
 const panelForm     = document.getElementById("panel-form");
 const panelResult   = document.getElementById("panel-result");
@@ -48,31 +39,6 @@ function hideAllPanels() {
   [panelIntro, panelForm, panelResult, panelError, panelFinished].forEach(
     (panel) => panel.setAttribute("hidden", "")
   );
-}
-
-/**
- * Valida que el dato introducido sea un número entre 0 y 99999999.
- * Rechaza vacíos, espacios y cualquier carácter no numérico.
- * @param {string} rawValue - Valor tal cual lo escribe el usuario
- * @returns {boolean}
- */
-function isValidDni(rawValue) {
-  if (!/^\d+$/.test(rawValue.trim())) {
-    return false;
-  }
-  const numericValue = Number(rawValue);
-  return numericValue >= MIN_DNI && numericValue <= MAX_DNI;
-}
-
-/**
- * Calcula la letra correspondiente al número de DNI.
- * Divide el número entre 23 y usa el resto como índice en la tabla.
- * @param {number} dniNumber
- * @returns {string} Letra resultante
- */
-function calculateDniLetter(dniNumber) {
-  const remainder = dniNumber % 23;
-  return LETTERS_BY_REMAINDER[remainder];
 }
 
 // =============================================================
@@ -106,7 +72,7 @@ function handleCalculate() {
   const dniNumber = Number(rawValue);
   const letter    = calculateDniLetter(dniNumber);
 
-  // Se rellena el panel de resultado antes de mostrarlo
+  // Rellenamos el panel de resultado antes de mostrarlo
   resultNumber.textContent = String(dniNumber).padStart(8, "0");
   resultLetter.textContent = letter;
 
@@ -144,16 +110,12 @@ function handleRestart() {
 
 // =============================================================
 // REGISTRO DE EVENTOS
-// Usamos addEventListener en vez de
-// onclick en el HTML, para mantener el JS separado del HTML.
 // =============================================================
 
 startButton.addEventListener("click", handleStart);
 calculateButton.addEventListener("click", handleCalculate);
 restartButton.addEventListener("click", handleRestart);
 
-// Cubrimos todos los botones de "repetir" y "cancelar" con
-// data-action para no depender de IDs concretos
 document.querySelectorAll("[data-action='repeat']").forEach((button) => {
   button.addEventListener("click", handleRepeat);
 });
@@ -162,8 +124,7 @@ document.querySelectorAll("[data-action='cancel']").forEach((button) => {
   button.addEventListener("click", handleCancel);
 });
 
-// Permitir pulsar Enter dentro del input para calcular,
-// mejora la experiencia de usuario sin necesidad de ratón
+// Permitir pulsar Enter dentro del input para calcular
 dniInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     handleCalculate();
