@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de la letra del DNI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <p class="page-header__eyebrow">Documento · Identificación</p>
+      <h1 class="page-header__title">
+        Calculadora de la <span class="page-header__highlight">letra</span> del DNI
+      </h1>
+      <p class="page-header__subtitle">
+        Introduce un número de hasta 8 cifras y obtén su letra correspondiente
+        según el cálculo del módulo 23.
+      </p>
+    </header>
+
+    <main class="dni-card" aria-live="polite">
+
+      <!-- Iniciar el sistema -->
+      <section id="panel-intro" class="dni-card__panel">
+        <p class="dni-card__lead">
+          Pulsa «Iniciar» para empezar a calcular letras de DNI.
+        </p>
+        <div class="dni-card__actions">
+          <button id="start-button" type="button" class="button button--primary">
+            Iniciar
+          </button>
+        </div>
+      </section>
+
+      <!-- DNI válido / Número fuera de rango / Dato no numérico -->
+      <section id="panel-form" class="dni-card__panel" hidden>
+        <div class="dni-card__field">
+          <label class="dni-card__label" for="dni-input">Número de DNI</label>
+          <input
+            id="dni-input"
+            class="dni-card__input"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="Ej. 12345678"
+            aria-describedby="dni-hint"
+          />
+          <p id="dni-hint" class="dni-card__hint">
+            Debe ser un número entre 0 y 99999999.
+          </p>
+        </div>
+        <div class="dni-card__actions">
+          <button id="calculate-button" type="button" class="button button--primary">
+            Calcular
+          </button>
+          <button type="button" class="button button--ghost" data-action="cancel">
+            Cancelar
+          </button>
+        </div>
+      </section>
+
+      <!-- DNI válido (resultado) -->
+      <section id="panel-result" class="dni-card__panel" hidden>
+        <div class="dni-result">
+          <div class="dni-stamp">
+            <span id="result-letter" class="dni-stamp__letter">A</span>
+          </div>
+          <p id="result-number" class="dni-result__number">00000000</p>
+          <p class="dni-result__caption">Letra calculada correctamente</p>
+        </div>
+        <div class="dni-card__actions">
+          <button type="button" class="button button--primary" data-action="repeat">
+            Calcular otro número
+          </button>
+          <button type="button" class="button button--ghost" data-action="cancel">
+            Cancelar
+          </button>
+        </div>
+      </section>
+
+      <!-- Número fuera de rango / Dato no numérico -->
+      <section id="panel-error" class="dni-card__panel" hidden role="alert">
+        <div class="dni-alert">
+          <span class="dni-alert__icon" aria-hidden="true">⚠</span>
+          <p>El dato introducido es incorrecto.</p>
+        </div>
+        <div class="dni-card__actions">
+          <button type="button" class="button button--primary" data-action="repeat">
+            Volver a intentarlo
+          </button>
+        </div>
+      </section>
+
+      <!-- Cancelación del proceso -->
+      <section id="panel-finished" class="dni-card__panel" hidden>
+        <p class="dni-card__lead">El programa ha finalizado.</p>
+        <div class="dni-card__actions">
+          <button id="restart-button" type="button" class="button button--ghost">
+            Iniciar de nuevo
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="page-footer__text">
+        <span class="page-footer__name">Nieves Durán</span>
+        &nbsp;·&nbsp; Bootcamp F5 Asturias
+      </p>
+    </footer>
+
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>
