@@ -1,0 +1,42 @@
+// =============================================================
+// VARIABLES GLOBALES
+// Centralizamos aquí todos los valores reutilizables (colores,
+// tipografías, espaciados...) siguiendo el principio de no repetir
+// valores "mágicos" sueltos por los distintos archivos .scss
+// =============================================================
+
+// --- Paleta de color (combinación verde + rosa) ---
+$color-ink: #14110f;        // negro cálido -> contornos, sombras duras y texto
+$color-paper: #fff7ef;      // crema -> superficie de la tarjeta
+$color-mint: #fbeef6;       // rosa-crema muy suave -> superficie de inputs
+$color-green: #33e07f;      // verde ácido -> color de marca principal
+$color-green-dark: #0e5c3b; // verde bosque -> degradados de fondo
+$color-pink: #ff3da6;       // rosa flúor -> color de marca secundario
+$color-pink-dark: #9c1865;  // rosa oscuro -> degradados de fondo, contraste
+$color-alert: #ff5a36;      // naranja quemado -> reservado para errores
+
+// --- Tipografías ---
+$font-display: "Archivo Black", "Arial Black", sans-serif; // titulares grandes y contundentes
+$font-mono: "Space Mono", "Courier New", monospace;        // números y letra del documento
+$font-body: "Inter", "Segoe UI", sans-serif;               // texto de interfaz
+
+// --- Espaciados (escala de 4px) ---
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-8: 3rem;
+
+// --- Bordes y sombras ---
+// El "look" cómic/sticker se construye con bordes gruesos y sombras
+// duras (sin desenfoque), no con blur ni degradados suaves.
+$border-bold: 4px solid $color-ink;
+$radius-card: 22px;
+$radius-control: 12px;
+$shadow-hard: 8px 8px 0 $color-ink;
+$shadow-hard-sm: 5px 5px 0 $color-ink;
+
+// --- Breakpoints ---
+$breakpoint-tablet: 640px;
