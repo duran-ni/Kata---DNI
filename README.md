@@ -34,7 +34,7 @@ El desarrollo se organiza en fases incrementales, cada una con sus propios commi
 
 * **JavaScript** (vanilla, ES2015+), sin frameworks, organizado por responsabilidades.
 
-* **Vitest** — previsto para la fase de tests unitarios (TDD, ciclo Red-Green-Refactor).
+* **Vitest** — tests unitarios con TDD (ciclo Red-Green-Refactor), 18 tests pasados.
 
 * **Node.js / npm** — gestión de dependencias y scripts (npm run sass, npm run sass-w).
 
@@ -71,3 +71,8 @@ El desarrollo se organiza en fases incrementales, cada una con sus propios commi
 ## 📷 Captura Tests
 
 ![Tests en verde](./assets/tests.png)
+
+## 📷 Prototipo
+
+![Captura del Prototipo](./assets/Prototipo.png)
+
