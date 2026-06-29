@@ -1,0 +1,159 @@
+// =============================================================
+// COMPONENTES
+// Tarjeta principal y botones. Metodología BEM:
+// .bloque, .bloque__elemento, .bloque--modificador
+// =============================================================
+
+@use "variables" as v;
+
+// -------------------------------------------------------------
+// Bloque: dni-card
+// La tarjeta es el contenedor principal de toda la interacción.
+// Usa el estilo "pegatina": borde grueso, sombra dura y rotación
+// ligera para dar personalidad sin perder legibilidad.
+// -------------------------------------------------------------
+.dni-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: v.$color-paper;
+  border: v.$border-bold;
+  border-radius: v.$radius-card;
+  box-shadow: v.$shadow-hard;
+  padding: v.$space-8 v.$space-6;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-5;
+  transform: rotate(-1deg);
+
+  // Cada panel representa un estado/escenario distinto de la app.
+  // La animación de entrada hace que el cambio entre paneles
+  // se sienta fluido en vez de brusco.
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-4;
+    text-align: center;
+    animation: dni-panel-in 0.35s ease both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
+    // El atributo hidden nativo oculta el panel del DOM y
+    // de los lectores de pantalla, más accesible que display:none
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__lead {
+    color: v.$color-ink;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-2;
+    text-align: left;
+  }
+
+  &__label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    // El rosa oscuro en la etiqueta refuerza la paleta sin saturar
+    color: v.$color-pink-dark;
+  }
+
+  &__hint {
+    font-size: 0.78rem;
+    color: rgba(v.$color-ink, 0.65);
+  }
+
+  &__input {
+    font-family: v.$font-mono;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: v.$space-3 v.$space-4;
+    border: 3px solid v.$color-ink;
+    border-radius: v.$radius-control;
+    // Fondo rosa-crema suave para distinguirlo visualmente del fondo blanco
+    background: v.$color-mint;
+    color: v.$color-ink;
+    transition: background-color 0.15s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    &:focus {
+      background: #fff;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: v.$space-3;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: v.$space-2;
+  }
+}
+
+// Animación de entrada de cada panel
+@keyframes dni-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -------------------------------------------------------------
+// Bloque: button
+// El efecto "se hunde" al hacer clic simula que el botón queda
+// presionado físicamente contra la tarjeta: pierde la sombra dura
+// y se desplaza exactamente lo que medía esa sombra (5px).
+// -------------------------------------------------------------
+.button {
+  font-family: v.$font-body;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: v.$space-3 v.$space-5;
+  border-radius: v.$radius-control;
+  border: 3px solid v.$color-ink;
+  box-shadow: v.$shadow-hard-sm;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 v.$color-ink;
+  }
+
+  // Modificador primario: verde ácido, acción principal
+  &--primary {
+    background: v.$color-green;
+    color: v.$color-ink;
+  }
+
+  // Modificador ghost: fondo crema, acción secundaria o cancelar
+  &--ghost {
+    background: v.$color-paper;
+    color: v.$color-ink;
+  }
+}
